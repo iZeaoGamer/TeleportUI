@@ -18,8 +18,8 @@ class Main extends PluginBase implements Listener{
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
         $player = $sender->getPlayer();
         switch($command->getName()){
-            case "tpui":
-                $this->menuForm($player);
+            case "tpa":
+                $this->teleportForm($player);
         }
         return true;
     }
@@ -27,7 +27,7 @@ class Main extends PluginBase implements Listener{
     public function teleportForm($player){
         if($player instanceof Player){
             $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-            $form = $api->createSimpleForm(function (Player $sender, array $data){
+            $form = $api->createSimpleForm(function (Player $sender, $data){
                 if(isset($data[0])){
                     switch($data[0]){
                         case 0:
@@ -57,7 +57,7 @@ class Main extends PluginBase implements Listener{
 
     public function tpaskForm($player){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createCustomForm(function (Player $event, array $data){
+        $form = $api->createCustomForm(function (Player $event, $data){
             $player = $event->getPlayer();
             $result = $data[0];
             if($result != null){
@@ -72,7 +72,7 @@ class Main extends PluginBase implements Listener{
     
     public function tpahereForm($player){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createCustomForm(function (Player $event, array $data){
+        $form = $api->createCustomForm(function (Player $event, $data){
             $player = $event->getPlayer();
             $result = $data[0];
             if($result != null){
@@ -87,7 +87,7 @@ class Main extends PluginBase implements Listener{
     
     public function tpacceptForm($player){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createCustomForm(function (Player $event, array $data){
+        $form = $api->createCustomForm(function (Player $event, $data){
             $player = $event->getPlayer();
             $result = $data[0];
             if($result != null){
@@ -102,7 +102,7 @@ class Main extends PluginBase implements Listener{
     
     public function tpdenyForm($player){
         $api = $this->getServer()->getPluginManager()->getPlugin("FormAPI");
-        $form = $api->createCustomForm(function (Player $event, array $data){
+        $form = $api->createCustomForm(function (Player $event, $data){
             $player = $event->getPlayer();
             $result = $data[0];
             if($result != null){
